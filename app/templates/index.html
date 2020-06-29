@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/grandpybot_logo.png') }}">
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/materia/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-uKLgCN8wZ+yo4RygxUNFhjywpL/l065dVTzvLuxys7LAIMmhZoLWb/1yP6+mF925" crossorigin="anonymous">
+    <script defer src="https://use.fontawesome.com/releases/v5.13.1/js/all.js"
+        integrity="sha384-heKROmDHlJdBb+n64p+i+wLplNYUZPaZmp2HZ4J6KCqzmd33FJ8QClrOV3IdHZm5"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>{{ title }}</title>
+</head>
+
+<body>
+    <div class="container d-flex align-items-center justify-content-center">
+        <div class="row ">
+            <div class="col">
+                <img class="img_grandpy" src="{{ url_for('static', filename='images/grandpybot_logo.png') }}"
+                    alt="GrandPy Bot - Logo">
+                <h1>GrandPy Bot</h1>
+                <p class="lead text-center">Le papy-robot qui vous dit presque tout !</p>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row pt-4 pb-3">
+            <div class="col">
+                <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+                    <div class="card-body">
+                        <p class="card-text">Salut ! Je suis GrandPy !</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label col-form-label-lg" for="inputLarge"></label>
+                    <input class="form-control form-control-lg" type="text"
+                        placeholder="Salut GrandPy ! Est-ce que tu connais l'adresse d'OpenClassrooms ?"
+                        id="inputLarge">
+                </div>
+                <button type="submit" class="btn btn-outline-primary">Envoyer</button>
+            </div>
+        </div>
+    </div>
+    <div class="container d-flex align-items-center justify-content-center">
+        <div class="row pt-4 pb-2">
+            <div class="col">
+                <ul class="list-inline text-center">
+                    <li class="list-inline-item">Jody Etienne</li>
+                    <li class="list-inline-item">&middot;</li>
+                    <li class="list-inline-item align-middle"><a href="https://github.com/etiennody"
+                            target="_blank"><i class=" fab fa-github fa-3x"></i></a></li>
+                    <li class="list-inline-item">&middot;</li>
+                    <li class="list-inline-item align-middle"><a href="https://www.linkedin.com/in/jody-etienne/"
+                            target="_blank"><i class="fab fa-linkedin fa-3x"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
