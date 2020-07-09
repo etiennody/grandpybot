@@ -2,6 +2,7 @@ import string
 
 from app.stopwordsfr import Stopwords
 
+
 class Parser:
     """Cutting a set of data into small, separately manipulable sets.
     """
@@ -9,8 +10,12 @@ class Parser:
     @staticmethod
     def address_parser(text):
         text = text.lower()
-        punctuation_replacer = str.maketrans(string.punctuation, ' '*len(string.punctuation))    
-        text_without_punctuation = ' '.join(text.translate(punctuation_replacer).split()).strip()
+        punctuation_replacer = str.maketrans(
+            string.punctuation, " " * len(string.punctuation)
+        )
+        text_without_punctuation = " ".join(
+            text.translate(punctuation_replacer).split()
+        ).strip()
         filtered_text = []
         filtered_text.extend(text_without_punctuation.split())
         response = []
@@ -19,4 +24,4 @@ class Parser:
                 response.append(word)
         if not response:
             raise ValueError("")
-        return ' '.join(response)
+        return " ".join(response)
