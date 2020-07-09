@@ -1,6 +1,7 @@
 class Stopwords:
     """stopwords used to filter french words
     """
+
     stopwords_fr = [
         "grandpy",
         "bot",
