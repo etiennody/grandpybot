@@ -4,6 +4,10 @@ from app.address_parser import Parser
 
 
 def test_parser_ok():
+    """
+    Test the entire method.
+    Choose different cases.
+    """
     cases = {
         "Salut où se trouve la poste?": "poste",
         "Hello où se trouve La Poste?": "poste",
@@ -18,8 +22,7 @@ def test_parser_ok():
 
 def test_parser():
     """
-    Test the entire method.
-    Must return the last word of the sentence.
+    Have to return the last words of the sentence.
     """
     text = "Bonjour, savez-vous où se situe la Tour Eiffel ?"
     address = Parser.address_parser(text)
@@ -28,7 +31,7 @@ def test_parser():
 
 def test_parser_without_stop_words():
     """
-    Test if the stop words treatment is not killing the main method
+    Test if the french stop words treatment doesn't get out the parser method.
     """
     text = "Ordinateurs soutiennent utilisateur"
     address = Parser.address_parser(text)
@@ -37,25 +40,25 @@ def test_parser_without_stop_words():
 
 def test_parser_str_lower():
     """
-    Test if the address is changed to lower case
+    Test if lower case have changed the parsing word retained.
     """
-    text = "Je veux aller à Paris"
+    text = "Je veux aller à Brest"
     address = Parser.address_parser(text)
-    assert address == "paris"
+    assert address == "brest"
 
 
 def test_parser_return_str():
     """
-    Test if the address doesn't contain words
+    Test if the address contains some punctuations only.
     """
-    text = "! , . / ="
+    text = "? ! , . / ="
     with pytest.raises(ValueError):
         Parser.address_parser(text)
 
 
 def test_parser_send_no_value():
     """
-    Test if no address is send
+    Test if parser is wordless.
     """
     text = ""
     with pytest.raises(ValueError):
@@ -64,7 +67,7 @@ def test_parser_send_no_value():
 
 def test_parser_returns_no_data():
     """
-    Test if no parser returns no data
+    Test if parser returns any data.
     """
     text = "Bonjour !"
     with pytest.raises(ValueError):
@@ -73,12 +76,11 @@ def test_parser_returns_no_data():
 
 def test_parser_word_with_punctuation():
     """
-    Test if word with punctation is correctly processed
+    Test if a punctuation is pasted to the word is correctly processed.
     """
-    text = "Salut, je veux découvrir Paris!"
+    text = "Salut, je veux découvrir Brest!"
     address = Parser.address_parser(text)
-    assert address == "paris"
-
+    assert address == "brest"
 
 
 # another_cases = [
