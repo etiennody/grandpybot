@@ -14,56 +14,39 @@
 </head>
 
 <body>
-    <div class="chat-app-wrapper">
-        <div class="container d-flex align-items-center justify-content-center">
-            <div class="row ">
-                <div class="col">
-                    <img class="img_grandpy" src="{{ url_for('static', filename='images/grandpybot_logo.png') }}"
-                        alt="GrandPy Bot - Logo">
-                    <h1>GrandPy Bot</h1>
-                    <p class="lead text-center">Le papy-robot qui vous dit presque tout !</p>
-                </div>
-            </div>
-        </div>
-        <div class="chat">
-            <div class="container">
-                <div class="row pt-4 pb-3">
-                    <div class="col">
-                        <div class="chat-page">
-                            <div class="msg-inbox">
-                                <div class="chats" id="chats">
-                                    <div class="msg-page" id="msg-page">
-                                        <div id="empty-chat" class="text-center img-fluid empty-chat">
-                                            <div class="empty-chat-holder">
-                                            </div>
-                                            <div class="card mb-3">
-                                                <div class="card-body text-white bg-primary">
-                                                    <p class="card-text">Salut ! Je suis GrandPy !</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div id="group-message-holder">
-                                        </div>
-                                    </div>
-                                </div>
-                                <form class="message-form" id="message-form">
-                                    <div class="form-group">
-                                        <label class="col-form-label col-form-label-lg" for="inputLarge"></label>
-                                        <input class="form-control form-control-lg message-input" type="text"
-                                            placeholder="Salut GrandPy ! Est-ce que tu connais l'adresse d'OpenClassrooms ?"
-                                            id="input-text" required>
-                                    </div>
-                                    <button type="submit" class="btn btn-outline-primary" id="sendButton"
-                                    required>Envoyer</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <!-- header -->
+    <div class="container d-flex align-items-center justify-content-center">
+        <div class="row ">
+            <div class="col">
+                <img class="img_grandpy" src="{{ url_for('static', filename='images/grandpybot_logo.png') }}"
+                    alt="GrandPy Bot - Logo">
+                <h1>GrandPy Bot</h1>
+                <p class="lead text-center">Le papy-robot qui vous dit presque tout !</p>
             </div>
         </div>
     </div>
-
+    <div class="container">
+        <div class="row pt-4 pb-3">
+            <div class="col">
+                <div class="chat-container" style="overflow: auto; max-height: 80vh">
+                    <!-- chat messages -->
+                    <div class="chat-message col-md-5 offset-md-7 grandpybot-message">
+                        Salut ! Je suis GrandPy !
+                    </div>
+                </div>
+                <form id="message-form">
+                    <div class="form-group">
+                        <label class="col-form-label col-form-label-lg" for="inputLarge"></label>
+                        <input class="form-control form-control-lg input" type="text"
+                            placeholder="Salut GrandPy ! Est-ce que tu connais l'adresse d'OpenClassrooms ?"
+                            id="input-message" required>
+                    </div>
+                    <button type="submit" class="btn btn-outline-primary" required>Envoyer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- footer -->
     <div class="container d-flex align-items-center justify-content-center">
         <div class="row pt-4 pb-2">
             <div class="col">

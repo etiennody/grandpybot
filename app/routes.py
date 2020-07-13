@@ -1,10 +1,15 @@
-from flask import render_template, request, render_template_string
+from flask import render_template, request
 
 from app import app
 
-messages = []
+import json
 
 
 @app.route("/")
 def index():
-    return render_template("index.html", messages=messages, title="GrandPy Bot")
+    return render_template("index.html", title="GrandPy Bot")
+
+
+@app.route("/search", methods=["POST"])
+def search():
+    return request.form["s"]
