@@ -1,5 +1,5 @@
 function submit_message(message) {
-    $.post("/search", { s: message }, handle_response);
+    $.post("/search", { message: message }, handle_response);
 
     function handle_response(data) {
         // append the grandpybot response to the div
@@ -13,7 +13,7 @@ function submit_message(message) {
 
 $('#message-form').on('submit', function (e) {
     e.preventDefault();
-    const input_message = $('#input-message').val()
+    const input_message = $('#input_message').val()
     // return if the user doesn't enter any text
     if (!input_message) {
         return
@@ -26,7 +26,7 @@ $('#message-form').on('submit', function (e) {
     `)
 
     // clear the text input 
-    $('#input-message').val('')
+    $('#input_message').val('')
 
     // send the message
     submit_message(input_message)
