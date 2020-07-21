@@ -3,7 +3,7 @@ import os
 from flask import jsonify, render_template, request
 
 from app import app
-from app.address_parser import Parser
+from app.address_parser import Parser, AddressMatchNotFound
 from app.maps import Maps
 
 
@@ -18,7 +18,11 @@ def search():
     # Initialize an object to parse the data sent in form
     message = request.form["input_message"]
     # Get the main place keyword
-    place = Parser.address_parser(message)
+    try:
+        place = Parser.address_parser(message)
+    except AddressMatchNotFound:
+        return jsonify({"error": "Désolé, tu peux reformuler ta question..."})
+
     # Call Google Maps API
     location = Maps().get_maps_information(place)
 
