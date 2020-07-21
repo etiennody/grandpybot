@@ -20,7 +20,7 @@ class Maps:
         """
 
         place = self.encode_search(place)
-        API_KEY = os.environ["GOOGLE_MAPS_API_KEY"]
+        API_KEY = os.environ["GOOGLE_GEOCODE_API_KEY"]
 
         url = f"{self.GEOCODE_BASE_URL}?language=fr&address={place}&key={API_KEY}"
 
