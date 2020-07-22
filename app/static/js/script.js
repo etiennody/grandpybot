@@ -11,15 +11,15 @@ function initMap(lat, lng, address) {
         zoom: 16
     });
     marker = new google.maps.Marker({
-        position: {lat: lat,  lng: lng},
+        position: { lat: lat, lng: lng },
         map: map
     });
     // Display info on click
     let infowindow = new google.maps.InfoWindow({
         content: address
-        });
-    marker.addListener('click', function() {
-    infowindow.open(map, marker);
+    });
+    marker.addListener('click', function () {
+        infowindow.open(map, marker);
     });
     index += 1;
 }
@@ -37,12 +37,20 @@ function submit_message(input_message) {
             `);
             return true
         }
+
+        let address = response.address;
+        let lat = response.lat;
+        let lng = response.lng;
+        let wiki_extract = response.wiki_extract;
+
+
         // Display the location address
         $(".chat-container").append(`
             <div class="chat-message col-md-5 offset-md-7 grandpybot-message">
-                Bien sûr mon poussin ! La voici : ${response.address}     
+                Bien sûr mon poussin ! La voici : ${address}     
             </div>
         `);
+
         function show_map() {
             mapIndex = "map" + String(index);
             // Display the location map
@@ -52,12 +60,19 @@ function submit_message(input_message) {
             `);
 
             //Create map with coordinates
-            let address = response.address;
-            let lat = response.lat;
-            let lng = response.lng;
             initMap(lat, lng, address);
         };
         show_map()
+
+        function show_wiki() {
+
+            $(".chat-container").append(`
+                <div class="chat-message col-md-5 offset-md-7 grandpybot-message">
+                    ${wiki_extract}
+                </div>
+            `);
+        };
+        show_wiki()
     }
 }
 
