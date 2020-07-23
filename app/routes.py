@@ -6,6 +6,7 @@ from app import app
 from app.address_parser import AddressMatchNotFound, Parser
 from app.maps import Maps
 from app.mediawiki import MediaWiki
+from app.sentences import Sentences
 
 
 @app.route("/")
@@ -18,6 +19,8 @@ def index():
 def search():
     # Initialize an object to parse the data sent in form
     message = request.form["input_message"]
+
+    sentence, wiki_sentence = Sentences.get_sentences()
     # Get the main place keyword
     try:
         place = Parser.address_parser(message)
@@ -33,14 +36,20 @@ def search():
         lng = location["lng"]
         # Call MediaWiki API
         wiki_extract = MediaWiki().get_mediawiki_information(lat, lng)
+
+        address_reply = sentence + address
+        wiki_reply = wiki_sentence + wiki_extract
     else:
-        address, lat, lng, wiki_extract = None, None, None, None
+        address, lat, lng = None, None, None
+        address_reply = "Oops, je crois que ce lieu est imaginaire..."
+        wiki_reply = None
         
     # Dictionary in response to the ajax request
     response = {
+        "address_reply" : address_reply,
         "address": address,
         "lng": lng,
         "lat": lat,
-        "wiki_extract": wiki_extract
+        "wiki_reply": wiki_reply
     }
     return jsonify(response)
