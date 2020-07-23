@@ -1,4 +1,4 @@
-//map variables
+//Map variables
 let address;
 let map;
 let marker;
@@ -37,17 +37,18 @@ function submit_message(input_message) {
             `);
             return true
         }
-
+        
+        let address_reply = response.address_reply
         let address = response.address;
         let lat = response.lat;
         let lng = response.lng;
-        let wiki_extract = response.wiki_extract;
+        let wiki_reply = response.wiki_reply;
 
 
         // Display the location address
         $(".chat-container").append(`
             <div class="chat-message col-md-5 offset-md-7 grandpybot-message">
-                Bien sûr mon poussin ! La voici : ${address}     
+                ${address_reply}     
             </div>
         `);
 
@@ -68,12 +69,16 @@ function submit_message(input_message) {
 
             $(".chat-container").append(`
                 <div class="chat-message col-md-5 offset-md-7 grandpybot-message">
-                    ${wiki_extract}
+                    ${wiki_reply}
                 </div>
             `);
         };
         show_wiki()
+
+        // Remove the loading indicator
+        $("#loading").remove();
     }
+    this.scrollToBottom();
 }
 
 $('#message-form').on('submit', function (e) {
@@ -85,12 +90,28 @@ $('#message-form').on('submit', function (e) {
     }
     // Displays user message
     $('.chat-container').append(`
-            <div class="chat-message col-md-5 human-message">
-                ${input_message}
-            </div>
-        `)
+        <div class="chat-message col-md-5 human-message">
+            ${input_message}
+        </div>
+    `)
+
+    // Loading 
+    $('.chat-container').append(`
+        <div class="chat-message text-center col-md-5 offset-md-7 grandpybot-message" id="loading">
+            <i class="fas fa-sync fa-spin fa-3x fa-fw"></i>
+        </div>
+        
+    `)
+
     // Clear the message input 
     $('#input_message').val('')
     // Send the message
     submit_message(input_message)
 });
+
+function scrollToBottom() {
+    const chat = $('.chat-container');
+    chat.scrollTop(chat[0].scrollHeight);
+}
+scrollToBottom();
+setInterval(scrollToBottom, 8000);
