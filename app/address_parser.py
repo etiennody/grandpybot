@@ -3,6 +3,11 @@ import string
 
 
 class AddressMatchNotFound(Exception):
+    """Processing a custom error.
+
+    Args:
+        Exception (string): a sentence when an error is detected.
+    """
     pass
 
 
@@ -12,10 +17,23 @@ class Parser:
 
     @staticmethod
     def address_parser(message):
+        """
+        Use Regex to parse input of user and
+        retain interesting key words.
+
+        Args:
+            message (string): the input of user.
+
+        Raises:
+            AddressMatchNotFound: processing a custom error.
+
+        Returns:
+            string: key words retain to processs in app.
+        """
 
         message = message.lower()
         pattern = [
-            r".*adress d\'([^\?]*)\?",
+            r".*adresse d\'([^\?]*)\?",
             r".*adresse de ([^\?]*)\?",
             r".*adresse du ([^\?]*)\?",
             r".*c\'est où ([^\?]*)\?",
