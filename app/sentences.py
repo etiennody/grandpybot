@@ -2,7 +2,10 @@ import random
 
 
 class Sentences:
-    """stores the sentences and picks two each time"""
+    """
+    List the sentences and choose twice
+    for address reply and for wiki reply.
+    """
 
     choices = {
         "1": "Bien sûr mon poussin ! La voici : ",
@@ -23,5 +26,10 @@ class Sentences:
 
     @staticmethod
     def get_sentences():
+        """Obtain a sentence from a random list of sentences.
+
+        Returns:
+            list: sentences for address reply and for wiki reply.
+        """
         ref = str(random.randint(1, 6))
         return Sentences.choices[ref], Sentences.wiki_choices[ref]
