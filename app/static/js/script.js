@@ -35,6 +35,10 @@ function submit_message(input_message) {
                 ${response.error}     
             </div>
             `);
+
+            // Remove the loading indicator
+            $("#loading").remove();
+
             return true
         }
         
