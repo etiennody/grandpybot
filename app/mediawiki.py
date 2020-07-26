@@ -2,7 +2,7 @@ import requests
 
 
 class MediaWiki:
-    """MediaWiki class calls MediaWiki API"""
+    """MediaWiki class calls MediaWiki API."""
 
     MEDIAWIKI_BASE_URL = "https://fr.wikipedia.org/w/api.php"
 
@@ -30,5 +30,3 @@ class MediaWiki:
             return wiki_extract
         except KeyError:
             return "Oops, cette contrée m'est encore inconnue..."
-        else:
-            return "Aie, je ne sais plus où j'habite..."

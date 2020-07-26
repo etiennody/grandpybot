@@ -43,10 +43,10 @@ def search():
         address, lat, lng = None, None, None
         address_reply = "Oops, je crois que ce lieu est imaginaire..."
         wiki_reply = None
-        
+
     # Dictionary in response to the ajax request
     response = {
-        "address_reply" : address_reply,
+        "address_reply": address_reply,
         "address": address,
         "lng": lng,
         "lat": lat,
