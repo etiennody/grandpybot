@@ -113,6 +113,7 @@ $('#message-form').on('submit', function (e) {
     submit_message(input_message)
 });
 
+// Display the last message after 8 seconds
 function scrollToBottom() {
     const chat = $('.chat-container');
     chat.scrollTop(chat[0].scrollHeight);
