@@ -22,9 +22,14 @@ class Maps:
         place = self.encode_search(place)
         API_KEY = os.environ["GOOGLE_GEOCODE_API_KEY"]
 
-        url = f"{self.GEOCODE_BASE_URL}?language=fr&address={place}&key={API_KEY}"
+        url = f"{self.GEOCODE_BASE_URL}"
+        payload = {
+            "langage": "fr",
+            "address": f"{place}",
+            "key": f"{API_KEY}"
+        }
 
-        data = requests.get(url).json()
+        data = requests.get(url, params=payload).json()
 
         if data["results"]:
             return {

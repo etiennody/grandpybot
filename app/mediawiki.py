@@ -17,16 +17,24 @@ class MediaWiki:
             dictionary: with extract data from coordinates.
         """
 
-        url = (
-            f"{self.MEDIAWIKI_BASE_URL}?format=json&action=query&prop=extracts&exsentences=2"
-            f"&explaintext&generator=geosearch&ggsradius=100&ggscoord={lat}|{lng}&ggslimit=2"
-        )
+        url = f"{self.MEDIAWIKI_BASE_URL}"
+        payload = {
+            "format": "json",
+            "action": "query",
+            "prop": "extracts",
+            "exsentences": "2",
+            "explaintext": "true",
+            "generator": "geosearch",
+            "ggsradius": "100",
+            "ggscoord": f"{lat} | {lng}",
+            "ggslimit": "2",
+        }
 
-        data = requests.get(url).json()
+        data = requests.get(url, params=payload).json()
 
         try:
             key = str(list(data["query"]["pages"].keys())[0])
             wiki_extract = data["query"]["pages"][key]["extract"]
             return wiki_extract
         except KeyError:
-            return "Oops, cette contrée m'est encore inconnue..."
+            return "Cette contrée m'est encore inconnue..."
