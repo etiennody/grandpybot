@@ -23,11 +23,11 @@ class MediaWiki:
             "action": "query",
             "prop": "extracts",
             "exsentences": "2",
-            "explaintext": "true",
+            "explaintext": "True",
             "generator": "geosearch",
             "ggsradius": "100",
-            "ggscoord": f"{lat} | {lng}",
-            "ggslimit": "2",
+            "ggscoord": f"{lat}|{lng}",
+            "ggslimit": "2"
         }
 
         data = requests.get(url, params=payload).json()
