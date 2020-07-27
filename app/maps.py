@@ -19,15 +19,10 @@ class Maps:
             dictionary: with formatted address, latitude and longitude data.
         """
 
-        place = self.encode_search(place)
         API_KEY = os.environ["GOOGLE_GEOCODE_API_KEY"]
 
         url = f"{self.GEOCODE_BASE_URL}"
-        payload = {
-            "langage": "fr",
-            "address": f"{place}",
-            "key": f"{API_KEY}"
-        }
+        payload = {"language": "fr", "address": f"{place}", "key": f"{API_KEY}"}
 
         data = requests.get(url, params=payload).json()
 
@@ -37,16 +32,3 @@ class Maps:
                 "lat": data["results"][0]["geometry"]["location"]["lat"],
                 "lng": data["results"][0]["geometry"]["location"]["lng"],
             }
-
-    def encode_search(self, place):
-        """The quote() function encodes space characters to %20
-        and encode space characters to plus sign (+),
-        quote_plus() provided by urllib.parse package.
-
-        Args:
-            place (string): a search place provided by parser.py.
-
-        Returns:
-            string: replace ' ' with '+', as required for quoting HTML form values.
-        """
-        return urllib.parse.quote_plus(place)
