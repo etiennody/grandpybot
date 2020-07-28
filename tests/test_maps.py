@@ -4,14 +4,6 @@ import requests
 from app.maps import Maps
 
 
-def test_encode_search_le_musee_d_art_et_d_histoire_de_fribourg():
-    place = "le musée d'art et d'histoire de fribourg"
-    assert (
-        Maps().encode_search(place)
-        == "le+mus%C3%A9e+d%27art+et+d%27histoire+de+fribourg"
-    )
-
-
 def test_get_maps_information_for_openclassrooms(monkeypatch):
 
     address = {
@@ -31,7 +23,7 @@ def test_get_maps_information_for_openclassrooms(monkeypatch):
                         "formatted_address": address["formatted_address"],
                         "geometry": {
                             "location": {"lat": address["lat"], "lng": address["lng"]}
-                        }
+                        },
                     }
                 ]
             }

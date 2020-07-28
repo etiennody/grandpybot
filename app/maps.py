@@ -22,7 +22,12 @@ class Maps:
         API_KEY = os.environ["GOOGLE_GEOCODE_API_KEY"]
 
         url = f"{self.GEOCODE_BASE_URL}"
-        payload = {"language": "fr", "address": f"{place}", "key": f"{API_KEY}"}
+        payload = {
+            "language": "fr",
+            "region": "fr",
+            "address": f"{place}",
+            "key": f"{API_KEY}",
+        }
 
         data = requests.get(url, params=payload).json()
 
