@@ -41,7 +41,7 @@ function submit_message(input_message) {
 
             return true
         }
-        
+
         let address_reply = response.address_reply
         let address = response.address;
         let lat = response.lat;
@@ -56,28 +56,33 @@ function submit_message(input_message) {
             </div>
         `);
 
-        function show_map() {
-            mapIndex = "map" + String(index);
-            // Display the location map
-            $(".chat-container").append(`
-                <div id=${mapIndex} class="map">
-                </div>
-            `);
+        if (address == null) {
+            console.log('Maps and MediaWiki informations are undefined !')
+        } else {
+            function show_map() {
+                mapIndex = "map" + String(index);
+                // Display the location map
+                $(".chat-container").append(`
+                    <div id=${mapIndex} class="map">
+                    </div>
+                `);
 
-            //Create map with coordinates
-            initMap(lat, lng, address);
-        };
-        show_map()
+                //Create map with coordinates
+                initMap(lat, lng, address);
+            };
+            show_map()
 
-        function show_wiki() {
+            function show_wiki() {
 
-            $(".chat-container").append(`
-                <div class="chat-message col-md-5 offset-md-7 grandpybot-message">
-                    ${wiki_reply}
-                </div>
-            `);
-        };
-        show_wiki()
+                $(".chat-container").append(`
+                    <div class="chat-message col-md-5 offset-md-7 grandpybot-message">
+                        ${wiki_reply}
+                    </div>
+                `);
+            };
+            show_wiki()
+
+        }
 
         // Remove the loading indicator
         $("#loading").remove();
