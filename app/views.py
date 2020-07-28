@@ -3,7 +3,7 @@ import os
 from flask import jsonify, render_template, request
 
 from app import app
-from app.address_parser import AddressMatchNotFound, Parser
+from app.address_parser import AddressMatchNotFound, address_parser
 from app.maps import Maps
 from app.mediawiki import MediaWiki
 from app.sentences import Sentences
@@ -23,7 +23,7 @@ def search():
     sentence, wiki_sentence = Sentences.get_sentences()
     # Get the main place keyword
     try:
-        place = Parser.address_parser(message)
+        place = address_parser(message)
     except AddressMatchNotFound:
         return jsonify({"error": "Désolé, tu peux reformuler ta question..."})
 
