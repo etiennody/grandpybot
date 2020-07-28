@@ -33,6 +33,7 @@ h1 {
   max-width: 300px;
   color: white;
   margin-left: auto;
+  padding: 13px;
 }
 
 .human-message {
@@ -41,8 +42,10 @@ h1 {
   max-width: 300px;
   color: white;
   margin: 13px 1px;
+  padding: 13px;
 }
 
 .map {
   height: 500px;
+  margin: 13px 1px;
 }
