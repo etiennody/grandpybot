@@ -29,6 +29,7 @@ h1 {
 
 .grandpybot-message {
   background: #22b538;
+  border-radius: 20px 20px 2px 20px;
   max-width: 300px;
   color: white;
   margin-left: auto;
@@ -36,6 +37,7 @@ h1 {
 
 .human-message {
   background: dodgerblue;
+  border-radius: 20px 20px 20px 2px;
   max-width: 300px;
   color: white;
   margin: 13px 1px;
