@@ -1,6 +1,6 @@
 import pytest
 
-from app.address_parser import Parser, AddressMatchNotFound
+from app.address_parser import AddressMatchNotFound, address_parser
 
 
 def test_parser_ok():
@@ -24,7 +24,7 @@ def test_parser_ok():
         "Merci d'avance et salutations à Mamie.": "la tour eiffel",
     }
     for case, val in cases.items():
-        address = Parser.address_parser(case)
+        address = address_parser(case)
         assert address == val
 
 
@@ -36,4 +36,4 @@ def test_parser_ko():
     cases = ["? ! , . / =", "", "Je veux aller à Brest", "Bonjour !"]
     for case in cases:
         with pytest.raises(AddressMatchNotFound):
-            Parser.address_parser(case)
+            address_parser(case)
