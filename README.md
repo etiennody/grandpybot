@@ -10,6 +10,7 @@ https://grandpybot-geo-info.herokuapp.com/
 * Python 3
 * Flask
 * Requests
+* Gunicorn
 
 ## Setup
 To run this application locally:
