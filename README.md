@@ -22,11 +22,22 @@ To run this application locally:
 * Clone / create the application repository:
     ```
     git clone https://github.com/etiennody/grandpybot.git && cd grandpybot
-    ````
+    ```
+
+* Copy and update environment variables values in .env:
+    ```
+    cp .env.example .env
+    ```
+
+* Add your own google maps and geocode api keys on .env:
+    ```
+    GOOGLE_GEOCODE_API_KEY="your_google_geocode_api_key"
+    GOOGLE_MAPS_API_KEY="your_google_maps_api_key"
+    ```
 
 * Install the requirements:
     ```
-    pipenv install
+    pipenv install --dev
     ```
 
 * Activate the pipenv shell:
@@ -34,11 +45,15 @@ To run this application locally:
     pipenv shell
     ```
 
-* Run the GrandPy Bot application:
-    ````
-    python grandpybot.py
+* Run tests:
+    ```
+    pytest
+    ```
 
-    ````
+* Run the GrandPy Bot application:
+    ```
+    python -m flask run
+    ```
 
 * Launch Flask server:
 You can visit localhost at https://127.0.0.1:5000/
