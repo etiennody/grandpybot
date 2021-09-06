@@ -59,4 +59,4 @@ To run this application locally:
 * Launch Flask server:
 You can visit localhost at https://127.0.0.1:5000/
 
-* Enjoy!!
+* Enjoy!
