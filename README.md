@@ -3,9 +3,6 @@ App built for project 7 in Python developer path at Openclassrooms.
 
 Here's a robot that would respond to you like your grandfather! If you ask him for the address of a place, he will give it to you, certainly, but with a long and very interesting story. Are you ready?
 
-## Online application
-https://grandpybot-geo-info.herokuapp.com/
-
 ## Requirements
 * Python 3
 * Flask
